@@ -11,36 +11,6 @@
             padding: 0;
             height: 100%;
             background: #111;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .top-bar {
-            padding: 10px;
-            background: #000;
-            text-align: center;
-        }
-
-        .top-bar a {
-            color: white;
-            text-decoration: none;
-            background: #444;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        .top-bar a:hover {
-            background: #666;
-        }
-
-        .pdf-wrapper {
-            flex: 1;
         }
 
         iframe {
@@ -48,36 +18,29 @@
             height: 100%;
             border: none;
         }
-
-        /* 📱 Mobile poprawki */
-        @media (max-width: 768px) {
-            .top-bar {
-                padding: 8px;
-            }
-
-            .top-bar a {
-                font-size: 13px;
-                padding: 6px 10px;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<iframe id="pdfViewer"></iframe>
 
-    <div class="top-bar">
-        <a href="Cv-Portfolio-Ada-Bielinska.pdf" target="_blank">
-            📄 Otwórz / Pobierz CV
-        </a>
-    </div>
+<script>
+    const iframe = document.getElementById("pdfViewer");
 
-    <div class="pdf-wrapper">
-        <iframe src="Cv-Portfolio-Ada-Bielinska.pdf#view=FitH"></iframe>
-    </div>
+    function loadPDF() {
+        if (window.innerWidth <= 768) {
+            // 📱 telefon
+            iframe.src = "CV-mobile.pdf#view=FitH";
+        } else {
+            // 💻 desktop
+            iframe.src = "CV-desktop.pdf#view=FitH";
+        }
+    }
 
-</div>
+    loadPDF();
+    window.addEventListener("resize", loadPDF);
+</script>
 
 </body>
 </html>
