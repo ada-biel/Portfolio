@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
 
     <style>
@@ -9,8 +10,37 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
-            background: #ffffff;
+            background: #111;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            padding: 10px;
+            background: #000;
+            text-align: center;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            background: #444;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .top-bar a:hover {
+            background: #666;
+        }
+
+        .pdf-wrapper {
+            flex: 1;
         }
 
         iframe {
@@ -18,12 +48,36 @@
             height: 100%;
             border: none;
         }
+
+        /* 📱 Mobile poprawki */
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 8px;
+            }
+
+            .top-bar a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<iframe src="Cv-Portfolio-Ada-Bielinska.pdf#zoom=page-width"></iframe>
+<div class="container">
+
+    <div class="top-bar">
+        <a href="Cv-Portfolio-Ada-Bielinska.pdf" target="_blank">
+            📄 Otwórz / Pobierz CV
+        </a>
+    </div>
+
+    <div class="pdf-wrapper">
+        <iframe src="Cv-Portfolio-Ada-Bielinska.pdf#view=FitH"></iframe>
+    </div>
+
+</div>
 
 </body>
 </html>
