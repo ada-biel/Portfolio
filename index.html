@@ -23,36 +23,7 @@
 
 <body>
 
-<iframe id="pdfViewer"></iframe>
-
-<script>
-    const iframe = document.getElementById("pdfViewer");
-
-    function fileExists(url, callback) {
-        fetch(url, { method: 'HEAD' })
-            .then(response => callback(response.ok))
-            .catch(() => callback(false));
-    }
-
-    function loadPDF() {
-        if (window.innerWidth <= 768) {
-            // 📱 próbujemy mobile
-            fileExists("CV-mobile.pdf", function(exists) {
-                if (exists) {
-                    iframe.src = "CV-mobile.pdf#view=FitH";
-                } else {
-                    iframe.src = "CV-desktop.pdf#view=FitH";
-                }
-            });
-        } else {
-            // 💻 desktop
-            iframe.src = "CV-desktop.pdf#view=FitH";
-        }
-    }
-
-    loadPDF();
-    window.addEventListener("resize", loadPDF);
-</script>
+<iframe src="CV-desktop.pdf#view=FitH"></iframe>
 
 </body>
 </html>
